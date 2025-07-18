@@ -14,6 +14,37 @@ class Calculadora:
             print("Entrada inválida.")
             return []
 
+    def submenu_tuplas(self):
+        while True:
+            print("\n--- SUBMENÚ DE TUPLAS ---")
+            print("1. Modificar valor en tupla")
+            print("2. Eliminar valor de tupla")
+            print("3. Ver tuplas")
+            print("4. Volver al menú principal")
+            opcion = input("Seleccione una opción (1-4): ")
+
+            if opcion == "1":
+                tipo = input("¿Modificar tupla 'par' o 'impar'?: ").lower()
+                try:
+                    indice = int(input("Índice a modificar: "))
+                    nuevo = int(input("Nuevo valor: "))
+                    self.basedatos.modificar_valor(tipo, indice, nuevo)
+                except ValueError:
+                    print("Entrada inválida.")
+            elif opcion == "2":
+                tipo = input("¿Eliminar de tupla 'par' o 'impar'?: ").lower()
+                try:
+                    valor = int(input("Valor a eliminar: "))
+                    self.basedatos.eliminar_valor(tipo, valor)
+                except ValueError:
+                    print("Entrada inválida.")
+            elif opcion == "3":
+                self.basedatos.ver_tuplas()
+            elif opcion == "4":
+                break
+            else:
+                print("Opción no válida. Intente de nuevo.")
+
     def menu(self):
         while True:
             print("\n--- MENÚ PRINCIPAL ---")
@@ -28,12 +59,10 @@ class Calculadora:
             print("9. Invertir lista")
             print("10. Crear tupla con pares")
             print("11. Crear tupla con impares")
-            print("12. Ver tuplas")
-            print("13. Modificar valor en tupla")
-            print("14. Eliminar valor de tupla")
-            print("15. Salir")
+            print("12. Submenú de tuplas")
+            print("13. Salir")
 
-            opcion = input("Seleccione una opción (1-15): ")
+            opcion = input("Seleccione una opción (1-13): ")
 
             if opcion == "1":
                 try:
@@ -41,7 +70,7 @@ class Calculadora:
                     n2 = float(input("Número 2: "))
                     self.objlista.incluir_lista([n1, n2])
                 except ValueError:
-                    print("entrada invalida.")
+                    print("Entrada inválida.")
 
             elif opcion == "2":
                 try:
@@ -51,7 +80,7 @@ class Calculadora:
                     self.objlista.insertar_dato(pos, n2)
                     self.objlista.insertar_dato(pos, n1)
                 except ValueError:
-                    print("entrada invalida.")
+                    print("Entrada inválida.")
 
             elif opcion == "3":
                 try:
@@ -60,7 +89,7 @@ class Calculadora:
                     self.objlista.eliminar_dato(n1)
                     self.objlista.eliminar_dato(n2)
                 except ValueError:
-                    print("entrada invalidad.")
+                    print("Entrada inválida.")
 
             elif opcion == "4":
                 self.objlista.ver_numero()
@@ -73,13 +102,15 @@ class Calculadora:
                     num = float(input("Buscar número: "))
                     self.objlista.buscar_indice(num)
                 except ValueError:
-                    print("entrada invalida.")
+                    print("Entrada inválida.")
+
             elif opcion == "7":
                 try:
                     num = float(input("Número a contar: "))
                     self.objlista.contar_repetidos(num)
                 except ValueError:
-                    print("entrada invalida.")
+                    print("Entrada inválida.")
+
             elif opcion == "8":
                 self.objlista.ordenar_lista()
 
@@ -95,26 +126,9 @@ class Calculadora:
                 self.basedatos.crear_tupla_impares(nums)
 
             elif opcion == "12":
-                self.basedatos.ver_tuplas()
+                self.submenu_tuplas()
 
             elif opcion == "13":
-                
-                tipo = input("¿Modificar tupla 'par' o 'impar'?: ").lower()
-                try:
-                    indice = int(input("Índice a modificar: "))
-                    nuevo = int(input("Nuevo valor: "))
-                    self.basedatos.modificar_valor(tipo, indice, nuevo)
-                except ValueError:
-                    print("entrada invalida.")
-            elif opcion == "14":
-                tipo = input("¿Eliminar de tupla 'par' o 'impar'?: ").lower()
-                try:
-                    valor = int(input("Valor a eliminar: "))
-                    self.basedatos.eliminar_valor(tipo, valor)
-                except ValueError:
-                    print("entrada invalida.")
-
-            elif opcion == "15":
                 print("¡Hasta luego!")
                 break
 
