@@ -1,5 +1,5 @@
 class ListaNumeros:
-    def _init_(self):
+    def __init__(self):
         self.lista_numero = []
 
     def guardar_numero(self, dato_numero):
