@@ -1,5 +1,5 @@
 class BaseDatos:
-    def _init_(self):
+    def __init__(self):
         self.lista_pares = []
         self.lista_impares = []
 
